@@ -1,0 +1,99 @@
+{
+        "intents": [
+                {
+                        "tag": "greeting",
+                        "patterns": [
+                                "Hi",
+                                "How are you",
+                                "Is anyone there?",
+                                "Hello",
+                                "Good day"
+                        ],
+                        "responses": [
+                                "Hello, thanks for visiting",
+                                "Good to see you again",
+                                "Hi there, how can I help?"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "goodbye",
+                        "patterns": [
+                                "Bye",
+                                "See you later",
+                                "Goodbye"
+                        ],
+                        "responses": [
+                                "See you later, thanks for visiting",
+                                "Have a nice day",
+                                "Bye! Come back again soon."
+                        ]
+                },
+                {
+                        "tag": "location",
+                        "patterns": [
+                                "where am i",
+                                "wer am i",
+                                "my current path",
+                                "my current location",
+                                "current location"
+                        ],
+                        "responses": [
+                                "pwd"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "list",
+                        "patterns": [
+                                "list the files",
+                                "show me the files",
+                                "show files and folders",
+                                "show me files and folders in current location",
+                                "display files in directory",
+                                "list items here"
+                        ],
+                        "responses": [
+                                "ls"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "goto",
+                        "patterns": [
+                                "go to location",
+                                "goto path",
+                                "goto directory"
+                        ],
+                        "responses": [
+                                "please provide me the path"
+                        ],
+                        "context_set": "goto_path"
+                },
+                {
+                        "tag": "home",
+                        "patterns": [
+                                "home",
+                                "root",
+                                "home folder"
+                        ],
+                        "responses": [
+                                "/"
+                        ],
+                        "context_filter": "goto_path"
+                },
+                {
+                        "tag": "thanks",
+                        "patterns": [
+                                "Thanks",
+                                "Thank you",
+                                "That's helpful"
+                        ],
+                        "responses": [
+                                "Happy to help!",
+                                "Any time!",
+                                "My pleasure"
+                        ]
+                }
+        ]
+}

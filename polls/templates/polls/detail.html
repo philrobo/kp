@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div id="searchform" class="main">
+        {% if error_message %}
+        <p>
+            <strong>{{ error_message }}</strong>
+        </p>{% endif %}
+
+        <form action="{% url 'polls:chatbot' %}" method="post">
+            {% csrf_token %}
+            <input id="field" type="text" name="input" id="inputQuery" value="" />
+            <input type="submit" value="ask" />
+        </form>
+        <p>{{message}}</p>
+    </div>
+</body>
+
+</html>
