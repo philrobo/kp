@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/harishankar/Documents/Work/Chennai/ChatBot/newmodel2.tflearn"
-all_model_checkpoint_paths: "/Users/harishankar/Documents/Work/Chennai/ChatBot/newmodel2.tflearn"
+model_checkpoint_path: "/Users/harishankar/Documents/Work/Chennai/python/mysite/polls/nlp/newmodel2.tflearn"
+all_model_checkpoint_paths: "/Users/harishankar/Documents/Work/Chennai/python/mysite/polls/nlp/newmodel2.tflearn"

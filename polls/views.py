@@ -57,28 +57,39 @@ def chatbot(request):
     input_text = pk = request.POST.get("input", "")
     if(input_text != ""):
         chatObj = chat(input_text)
+        isExcecutable = False
         chat_response = chatObj.chat_response()
         print(chat_response[1])
-        if(chat_response[1] == 'home'):
+
+        if(chat_response[1] in {"location", "list", "home"}):
+            isExcecutable = True
+
+        if(chat_response[1] in ['home', "application"]):
             set_globvar_to_one(chat_response[0])
             command_response = 'path set to location: '+chat_response[0]
-        elif(chat_response[1] == 'goto'):
+        elif(chat_response[1] in ['goto', 'greeting', 'goodbye', 'thanks']):
             command_response = chat_response[0]
         else:
-            command_response = commands(chat_response[0])
-            set_globvar_to_one(chat_response[0])
+            command_response = commands(chat_response[0], isExcecutable)
+            # set_globvar_to_one(chat_response[0])
         return render(request, 'polls/detail.html', {'message': command_response})
     else:
         return HttpResponse("")
 
 
-def commands(cmd):
-    if(globvar == ""):
+def commands(cmd, isExcecutable):
+    print(isExcecutable)
+    print(cmd)
+    print(globvar)
+    print("-----------------------------")
+    if(globvar == "" and isExcecutable):
+        result = subprocess.getoutput(cmd)
+    elif not isExcecutable:
         result = subprocess.getoutput(cmd)
     else:
         print("command to be executed is : "+cmd)
-        output = subprocess.Popen(cmd, cwd=globvar,
-                                  stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        output = subprocess.Popen(
+            cmd, cwd=globvar, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
         result = output.stdout.read().decode("utf-8")
     print("path : " + globvar + " command :" + cmd + "; output : "+result)
     return result

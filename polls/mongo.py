@@ -18,6 +18,6 @@ class parseMango(object):
         collection = db['errorCollection']
         cursor = collection.find({})
         for document in cursor:
-            print(document['event']['level'])
-            # print(document['timeStamp'])
+            print(document['event']['timeStamp'])
+            print(document['event']['message'])
         return "success"
